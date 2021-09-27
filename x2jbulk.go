@@ -4,15 +4,16 @@ import (
 	"os"
 )
 
-func ReadXmlMsgsFromFile(fname string, r bool) error {
+func ReadXmlMsgsFromFile(fname string) error {
+	println("get in")
 	_, statErr := os.Stat(fname)
 	if statErr != nil {
 		return statErr
 	}
-	o, oErr := os.Open(fname)
-	if oErr != nil {
-		return oErr
+	xmlFile, openErr := os.Open(fname)
+	if openErr != nil {
+		return openErr
 	}
-	defer 
+	defer xmlFile.Close()
 	return nil
 }
